@@ -1,0 +1,168 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Spam Detection Result</title>
+
+    <link rel="shortcut icon"
+          href="{{ url_for('static', filename='spam-favicon.ico') }}">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='styles.css') }}">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/5f3f547070.js"
+            crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <!-- Background Decorations -->
+    <div class="background-circle circle-one"></div>
+    <div class="background-circle circle-two"></div>
+
+    <div class="main-container">
+
+        <!-- Logo -->
+        <div class="logo">
+            <div class="logo-icon">
+                <i class="fas fa-shield-alt"></i>
+            </div>
+        </div>
+
+        <!-- Header -->
+        <div class="header">
+            <span class="small-title">AI ANALYSIS COMPLETE</span>
+
+            <h1>
+                MESSAGE
+                <span>RESULT</span>
+            </h1>
+
+            <p>
+                Our NLP model has analyzed your message.
+            </p>
+        </div>
+
+        <!-- Result Card -->
+        <div class="result-card">
+
+            {% if prediction[0] == 1 %}
+
+                <!-- SPAM RESULT -->
+
+                <div class="result-icon spam-icon">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+
+                <div class="result-content">
+                    <span class="result-label spam-label">
+                        <i class="fas fa-circle"></i>
+                        SPAM DETECTED
+                    </span>
+
+                    <h2>
+                        Gotcha! This message is
+                        <span>SPAM</span>
+                    </h2>
+
+                    <p>
+                        Our AI model detected suspicious patterns
+                        commonly associated with spam messages.
+                    </p>
+                </div>
+
+                <img class="result-gif"
+                     src="{{ url_for('static', filename='spam.gif') }}"
+                     alt="">
+
+            {% elif prediction[0] == 0 %}
+
+                <!-- SAFE RESULT -->
+
+                <div class="result-icon safe-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+
+                <div class="result-content">
+                    <span class="result-label safe-label">
+                        <i class="fas fa-circle"></i>
+                        SAFE MESSAGE
+                    </span>
+
+                    <h2>
+                        Great! This message is
+                        <span>NOT SPAM</span>
+                    </h2>
+
+                    <p>
+                        Our AI model did not detect suspicious
+                        spam patterns in this message.
+                    </p>
+                </div>
+
+                <img class="result-gif"
+                     src="{{ url_for('static', filename='not-spam.gif') }}"
+                     alt="">
+
+            {% endif %}
+
+            <!-- Back Button -->
+
+            <a href="{{ url_for('home') }}" class="back-button">
+                <i class="fas fa-arrow-left"></i>
+                Check Another Message
+            </a>
+
+        </div>
+
+        <!-- Information -->
+
+        <div class="result-info">
+
+            <div class="info-item">
+                <i class="fas fa-brain"></i>
+                <div>
+                    <strong>NLP Analysis</strong>
+                    <span>Natural Language Processing</span>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <i class="fas fa-bolt"></i>
+                <div>
+                    <strong>Instant Result</strong>
+                    <span>AI-powered prediction</span>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <i class="fas fa-lock"></i>
+                <div>
+                    <strong>Secure</strong>
+                    <span>Your message stays private</span>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Footer -->
+
+        <footer>
+            <p>
+                © 2026 <strong>MS Spam Detector</strong>
+                • Built with Python & Flask
+            </p>
+        </footer>
+
+    </div>
+
+</body>
+</html>
+

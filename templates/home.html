@@ -1,0 +1,171 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MS Spam Detector</title>
+
+    <link rel="shortcut icon"
+          href="{{ url_for('static', filename='spam-favicon.ico') }}">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='styles.css') }}">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/5f3f547070.js"
+            crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <!-- Background Decorations -->
+    <div class="background-circle circle-one"></div>
+    <div class="background-circle circle-two"></div>
+
+    <!-- Main Container -->
+    <div class="main-container">
+
+        <!-- Logo / Icon -->
+        <div class="logo">
+            <div class="logo-icon">
+                <i class="fas fa-shield-alt"></i>
+            </div>
+        </div>
+
+        <!-- Header -->
+        <div class="header">
+            <span class="small-title">AI POWERED</span>
+
+            <h1>
+                SPAM
+                <span>DETECTOR</span>
+            </h1>
+
+            <p>
+                Protect your inbox with intelligent
+                <strong>NLP-powered</strong> spam detection.
+            </p>
+        </div>
+
+        <!-- Detection Card -->
+        <div class="detector-card">
+
+            <div class="card-header">
+                <div>
+                    <h2>
+                        <i class="fas fa-envelope-open-text"></i>
+                        Check Your Message
+                    </h2>
+
+                    <p>
+                        Enter an email or message below to analyze it.
+                    </p>
+                </div>
+
+                <div class="status">
+                    <span class="status-dot"></span>
+                    AI ONLINE
+                </div>
+            </div>
+
+            <!-- Flask Prediction Form -->
+            <form action="{{ url_for('predict') }}" method="POST">
+
+                <div class="textarea-container">
+
+                    <textarea
+                        class="message-box"
+                        name="message"
+                        rows="10"
+                        placeholder="Type or paste your message here...
+
+Example:
+Congratulations! You have won a $1,000 prize. Click here to claim your reward..."
+                        required></textarea>
+
+                    <div class="textarea-footer">
+                        <span>
+                            <i class="fas fa-lock"></i>
+                            Your message is analyzed securely
+                        </span>
+
+                        <span id="charCount">0 characters</span>
+                    </div>
+
+                </div>
+
+                <button type="submit" class="predict-button">
+                    <i class="fas fa-search"></i>
+                    Analyze Message
+                    <i class="fas fa-arrow-right arrow"></i>
+                </button>
+
+            </form>
+
+        </div>
+
+        <!-- Features -->
+        <div class="features">
+
+            <div class="feature">
+                <div class="feature-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+
+                <div>
+                    <h3>NLP Powered</h3>
+                    <p>Natural Language Processing</p>
+                </div>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+
+                <div>
+                    <h3>Fast Detection</h3>
+                    <p>Instant prediction results</p>
+                </div>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+
+                <div>
+                    <h3>Smart Security</h3>
+                    <p>Detect suspicious messages</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p>
+                © 2026 <strong>MS Spam Detector</strong>
+                • Built with Python & Flask
+            </p>
+        </footer>
+
+    </div>
+
+    <!-- Character Counter -->
+    <script>
+        const textarea = document.querySelector(".message-box");
+        const charCount = document.getElementById("charCount");
+
+        textarea.addEventListener("input", function () {
+            charCount.textContent = this.value.length + " characters";
+        });
+    </script>
+
+</body>
+</html>
+```
